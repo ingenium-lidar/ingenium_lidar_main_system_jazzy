@@ -44,6 +44,7 @@ sudo snap install firefox
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo snap install --classic blender #AB Install blender (a 3D modeling software)
+sudo snap install gh #AB Install the gh (or GitHub) package
 
 echo -e "\e[38;5;82mInstalling and configuring git...\033[0m"
 sudo apt-get install git #AB Install and then configure git (a source control software for coders)
