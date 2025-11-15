@@ -36,14 +36,15 @@ sudo apt install python3-pip #AB Install pip, Python's package manager.
 sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
 sudo apt install sl #AB Install sl, an alias for ls
 sudo apt install tree #AB A fancy directory structure printer
+#AB VERY IMPORTANT NOTE: We used to use snap to install CloudComp-are and Blender, but snap bundled packages incompatible with our graphics drivers and everything crashed. Use apt instead. It's safer.
+sudo apt install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
+sudo apt install blender #AB Install blender (a 3D modeling software)
 
 
 echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender via snap...\033[0m"
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap install firefox
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
-sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
-sudo snap install --classic blender #AB Install blender (a 3D modeling software)
 sudo snap install gh #AB Install the gh (or GitHub) package
 
 echo -e "\e[38;5;82mInstalling and configuring git...\033[0m"
