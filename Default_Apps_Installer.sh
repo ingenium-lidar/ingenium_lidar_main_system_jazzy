@@ -11,7 +11,7 @@ BOLD='\e[1m' #AB format echo text as bold
 # for code in {0..255}
 #     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
 #   done
-ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using ip address 
+ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using the ip address command
 
 
 
