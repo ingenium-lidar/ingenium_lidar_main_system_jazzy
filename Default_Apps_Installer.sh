@@ -180,5 +180,5 @@ sudo apt autoremove #AB Remove all files not needed in the system. Frees up a va
 
 echo -e "\e[38;5;82mDefault_Apps_Installer.sh has finished running now.\033[0m"
 
-cd /agent_scripts
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts
 ./reboot.sh
