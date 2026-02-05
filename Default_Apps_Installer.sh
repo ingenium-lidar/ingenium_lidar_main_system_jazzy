@@ -2,6 +2,7 @@
 
 #AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu 24.04.1 LTS install.
 #AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see Ubuntu-Core-RPi-Default-Packages-Installer.sh
+#AB: This script was most recently run with no fatal errors on April 2 2026
 
 RED='\033[0;31m' #AB format echo text as red
 NC='\033[0m' #AB format echo text as "no color"
@@ -169,27 +170,12 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 
 
 
-#---------------------------------------------INSTALL SLAM STUFF---------------------------------------------
+#---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
-# INSTALL THE GITHUB THAT IS A DEPENDENCY OF THE MAIN SLAM GITHUB
-cd ~
-sudo apt install python3-colcon-common-extensions
-source /opt/ros/jazzy/setup.bash #FK source the version of ros
-mkdir -p ~/Apps/ros2_ws/src
-echo -e "\e[38;5;5m If you got a 'fatal' error saying ros2_ws already exists, do not worry. Everything is OK. \033[0m"
-
-cd ~/Apps/ros2_ws/src
-git clone https://github.com/rsasaki0109/ndt_omp_ros2.git -b humble
-cd ndt_omp_ros2
-colcon build --executor sequential --cmake-clean-first
-echo -e "\e[38;5;5m If you got depreciation warnings and such, but nothing labeled 'error' or something else really serious, do not worry. Everything is OK. \033[0m"
-source ~/Apps/ros2_ws/src/ndt_omp_ros2/install/setup.bash #FK source the ros setup script for this application specifically
-
-ros2 run ndt_omp_ros2 align data/251370668.pcd data/251371071.pcd #FK tests it
-
-# INSTALL THE MAIN SLAM GITHUB
-# insert stuff here
+echo -e "\e[38;5;82mInstalling lidarslam_ros2...\033[0m"
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
+./Install_SLAM.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
 

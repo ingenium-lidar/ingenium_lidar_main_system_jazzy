@@ -39,7 +39,7 @@ echo "Installing colcon..."
 sleep 1
 sudo apt install colcon & #AB A build tool for ROS2
 
-echo 'alias run_jazzy="source /opt/ros/jazzy/setup.bash"' >> ~/.bashrc #AB add the alias run_jazzy to the system ~/.bashrc file.
+echo 'source /opt/ros/jazzy/setup.bash' >> ~/.bashrc #AB Add command to source ros jazzy upon terminal startup to the system ~/.bashrc file.
 
 echo "ROS2 Jazzy installation complete."
 sleep 1
