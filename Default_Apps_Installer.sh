@@ -179,3 +179,6 @@ echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
 
 echo -e "\e[38;5;82mDefault_Apps_Installer.sh has finished running now.\033[0m"
+
+cd /agent_scripts
+./reboot.sh
