@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu 24.04.1 LTS install.
-#AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see Ubuntu-Core-RPi-Default-Packages-Installer.sh
+#AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu 24.04.* LTS install.
+#AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see RPi-Default-Apps-Installer.sh
+#AB: This script was most recently run with no fatal errors on April 2 2026
 
 RED='\033[0;31m' #AB format echo text as red
 NC='\033[0m' #AB format echo text as "no color"
@@ -24,42 +25,38 @@ sleep 1
 echo -e "\e[38;5;82mUpdating and upgrading apt repositories..."
 sudo apt update
 sudo apt upgrade
-echo -e "\e[38;5;82mInstalling htop, openssh, gnome-keyring, rpi-imager, gnome-tweaks, snapd, yamllint, gdm-toolkit, net-tools, pip, python3.12-venv, sl, and tree via apt...\033[0m"
-sudo apt install htop #AB Disk space monitor
-sudo apt install openssh-server #AB SSH client
-sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
-sudo apt install rpi-imager #AB a software for burning OSes onto SD cards for use in a Raspberry Pi
-sudo apt install gnome-tweaks #AB An OS customization tool
-sudo apt install snapd #AB A package manager
-sudo apt install yamllint #AB a tool to check the syntax of YAML files
-sudo apt install gdm-settings libglib2.0-dev-bin #AB Another OS customization tool
-sudo apt install net-tools
-sudo apt install python3-pip #AB Install pip, Python's package manager.
-sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
-sudo apt install sl #AB Install sl, an alias for ls
-sudo apt install tree #AB A fancy directory structure printer
-#AB VERY IMPORTANT NOTE: We used to use snap to install CloudComp-are and Blender, but snap bundled packages incompatible with our graphics drivers and everything crashed. Use apt instead. It's safer.
-sudo apt install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
-sudo apt install blender #AB Install blender (a 3D modeling software)
-sudo apt install gparted #AB A partition manager
-sudo apt install dosfstools mtools #AB Dependencies for gparted on the previous line which let it work with FAT32 formatting
-sudo apt install vim #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
-
-
-echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender via snap...\033[0m"
-sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
-sudo snap install firefox
-sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
-sudo snap install gh #FK/AB install GitHub command line interface
-sudo snap install emacs #AB Install emacs, for all the people who know that instead of vim
-
-
+echo -e "\e[38;5;82mInstalling htop, openssh, gnome-keyring, rpi-imager, gnome-tweaks, snapd, yamllint, gdm-toolkit, net-tools, pip, python3.12-venv, sl, tree, cloudcompare, blender, gparted, dosfstools, mtools, and vim via apt...\033[0m"
+sudo apt install -y htop #AB Disk space monitor
+sudo apt install -y openssh-server #AB SSH client
+sudo apt-get install -y gnome-keyring #AB Install a secure cryptographic library needed by VS Code
+sudo apt install -y rpi-imager #AB a software for burning OSes onto SD cards for use in a Raspberry Pi
+sudo apt install -y gnome-tweaks #AB An OS customization tool
+sudo apt install -y snapd #AB A package manager
+sudo apt install -y yamllint #AB a tool to check the syntax of YAML files
+sudo apt install -y gdm-settings libglib2.0-dev-bin #AB Another OS customization tool
+sudo apt install -y net-tools
+sudo apt install -y python3-pip #AB Install pip, Python's package manager.
+sudo apt install -y python3.12-venv #AB Install a package to allow creating python virtual environments
+sudo apt install -y sl #AB Install sl, an alias for ls
+sudo apt install -y tree #AB A fancy directory structure printer
+#AB VERY IMPORTANT NOTE: We used to use snap to install CloudCompare and Blender, but snap bundled packages incompatible with our graphics drivers and everything crashed. Use apt instead. It's safer.
+sudo apt install -y cloudcompare #AB Install CloudCompare (a point-cloud processing software)
+sudo apt install -y blender #AB Install Blender (a 3D modeling software)
+sudo apt install -y gparted #AB A partition manager
+sudo apt install -y dosfstools mtools #AB Install dependencies for gparted on the previous line which let it work with FAT32 formatting
+sudo apt install -y vim #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
 echo -e "\e[38;5;82mInstalling and configuring git...\033[0m"
-sudo apt-get install git #AB Install and then configure git (a source control software for coders)
+sudo apt-get install -y git #AB Install and then configure git (a source control software for coders)
 git config --global user.email "ingenium.lidar@outlook.com"
 git config --global user.name "Ingenium-LiDAR"
 
-code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyring
+echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender via snap...\033[0m"
+sudo snap install firefox
+sudo snap refresh firefox #AB Update the default-installed Firefox to the latest version
+sudo snap install gh #FK/AB install GitHub command line interface
+sudo snap install emacs #AB Install emacs, for all the people who know that instead of vim
+sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
+code --password-store="gnome-libsecret" #AB (attempt to) configure VS Code to use Gnome Keyring (opening code in the process...)
 
 
 
@@ -69,7 +66,7 @@ code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyri
 echo -e "\e[38;5;82mCreating default directory structure...\033[0m"
 mkdir -p ~/Documents/GitHub
 mkdir -p ~/Documents/Data
-mkdir ~/Apps
+mkdir -p ~/Apps/ros2_ws/src
 
 
 
@@ -84,27 +81,24 @@ if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory ca
     cd ingenium_cartographer #AB Enter the newly cloned repository
     git switch jazzy #AB Switch to the jazzy branch of the ingenium_cartographer repository
 else
-    cd ingenium_cartographer #AB Enter the newly cloned repository
+    cd ingenium_cartographer #AB Else, enter the existing repository
     git pull #AB Update the repository to the latest version
-    git switch jazzy #AB Switch to the jazzy branch of the ingenium_cartographer repository (backup, since the last didn't work on a recent install)
+    git switch jazzy #AB Switch to the jazzy branch of the ingenium_cartographer repository 
 fi
 
 
 for file in *; do #AB Iterate through all files within it
-    if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+    if [[ "$file" == *.sh ]]; then #AB If the file ends in .sh (i.e., if it's a bash script)...
         chmod +x "$file" #AB ...then mark it as executable
     elif [ -d "$file" ]; then #AB If the file is a directory...
         for subfile in "$file"/*; do #AB Iterate through all files within the directory
-            if [[ "$subfile" == *.sh ]]; then #AB If the file is a bash script...
+            if [[ "$subfile" == *.sh ]]; then #AB If _that_ file is a bash script...
                 chmod +x "$subfile" #AB ...then mark it as executable
-            fi
+            fi #AB This second loop catches all of the scripts in agent_scripts
         done
     fi
 done
 
-
-
-gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
 
 
 
@@ -112,7 +106,7 @@ gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/i
 
 
 echo -e "\e[38;5;82mInstalling ROS2 Jazzy Jalisco...\033[0m"
-cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory.
 ./Install_Jazzy.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
@@ -123,8 +117,8 @@ cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the in
 echo -e "\e[38;5;82mInstalling hardware drivers...\033[0m"
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install ros-jazzy-velodyne #AB Install the Velodyne driver. It's in a stack hosted (I believe) on the ROS website.
-sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
+sudo apt-get -y install ros-jazzy-velodyne #AB Install the Velodyne driver. It's in a stack hosted (I believe) on the ROS website.
+sudo apt-get -y install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. These drivers are now maintained as part of the built-in ROS package manager! 
 
 
 
@@ -133,8 +127,8 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 
 echo -e "\e[38;5;82mConfiguring ports and IP addresses...\033[0m"
 #AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
-#FK probably unnecessary: sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
-#FK Adds a network connection to the ethernet port with the stable ipv4 address 192.168.1.100/24, necessary to connect to the VLP-32C
+#FK This older line of code is probably unnecessary: sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
+#FK Add a network connection to the ethernet port with the stable ipv4 address 192.168.1.100/24, which is necessary to connect to the VLP-32C LiDAR puck
 nmcli connection add type ethernet ifname $ethernet con-name lidar-puck autoconnect yes ipv4.addresses "192.168.1.201" ipv4.method manual
 
 
@@ -143,10 +137,9 @@ nmcli connection add type ethernet ifname $ethernet con-name lidar-puck autoconn
 
 
 echo -e "\e[38;5;82mInstalling VeloView...\033[0m"
-CURRENT_DIRECTORY=$(pwd) #AB store the current directory in a variable
 cd ~/Apps
 
-#AB Download VeloView 5.1 for Ubuntu from the web
+#AB Download VeloView 5.1 for Ubuntu from the web. Update this URL if VeloView ever stops working.
 curl "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.9&type=app&os=Linux&downloadFile=VeloView-5.1.0-Ubuntu18.04-x86_64.tar.gz" --output veloview.tar.gz
 tar -xzf veloview.tar.gz #AB Extract it from the archive. Extracts by default to a directory called VeloView-5.1.0-Ubuntu18.04-x86_64
 chmod +x "VeloView-5.1.0-Ubuntu18.04-x86_64/bin/VeloView" #AB Make the VeloView binary executable
@@ -167,34 +160,14 @@ EOF"
 sudo chmod +x "/usr/share/applications/veloview.desktop" #AB Make the desktop file into an executable
 rm veloview.tar.gz #AB delete the archive previously downloaded
 
-cd $CURRENT_DIRECTORY #AB return to the directory the script was in before installing VeloView
 
 
+#---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
-#---------------------------------------------INSTALL SLAM STUFF---------------------------------------------
 
-
-# INSTALL THE GITHUB THAT IS A DEPENDENCY OF THE MAIN SLAM GITHUB
-cd ~
-sudo apt install python3-colcon-common-extensions
-#FK source the version of ros
-source /opt/ros/jazzy/setup.bash
-mkdir -p ~/Apps/ros2_ws/src
-echo -e "\e[38;5;5m If you got a 'fatal' error saying ros2_ws already exists, do not worry. Everything is OK. \033[0m"
-
-cd ~/Apps/ros2_ws/src
-git clone https://github.com/rsasaki0109/ndt_omp_ros2.git -b humble
-cd ndt_omp_ros2
-colcon build --executor sequential --cmake-clean-first
-echo -e "\e[38;5;5m If you got depreciation warnings and such, but nothing labeled 'error' or something else really serious, do not worry. Everything is OK. \033[0m"
-#FK source the ros setup script for this application specifically
-source ~/Apps/ros2_ws/src/ndt_omp_ros2/install/setup.bash
-
-#FK test it!
-ros2 run ndt_omp_ros2 align data/251370668.pcd data/251371071.pcd
-
-# INSTALL THE MAIN SLAM GITHUB
-# insert stuff here
+echo -e "\e[38;5;82mInstalling lidarslam_ros2...\033[0m"
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. 
+./Install_SLAM.sh #AB Run the Install_SLAM.sh script to install lidarslam_ros2 
 
 
 
@@ -202,11 +175,13 @@ ros2 run ndt_omp_ros2 align data/251370668.pcd data/251371071.pcd
 
 
 echo -e "\e[38;5;82mCleaning up...\033[0m"
-echo 'alias cleanup="./cleanup.sh"' >> ~/.bashrc #AB add the alias cleanup to the system ~/.bashrc file. It will now run ./cleanup.sh whenever the command "cleanup" is entered.
+
 echo 'alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"' >> ~/.bashrc #AB add the alias update to the system ~/.bashrc file. It will now update, upgrade, and finally autoremove all unnecessary files whenever the command "update" is entered.
 
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
+
+gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
 
 echo -e "\e[38;5;82mDefault_Apps_Installer.sh has finished running now.\033[0m"
 
