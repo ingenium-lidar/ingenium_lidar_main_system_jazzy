@@ -16,6 +16,8 @@ ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, whi
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
+
+
 echo -e "\e[38;5;82mInstalling base packages...\033[0m"
 sleep 1
 
