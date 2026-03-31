@@ -66,15 +66,11 @@ code --password-store="gnome-libsecret" #AB (attempt to) configure VS Code to us
 
 echo -e "\e[38;5;82mCreating default directory structure...\033[0m"
 mkdir -p ~/Documents/GitHub
-mkdir -p ~/Documents/Github
 mkdir -p ~/Apps/ros2_ws/src
 
-# cd ~/Documents
-# git clone https://github.com/Ingenium-LiDAR/Data.git
-# git lfs install
-# git lfs track "*"
-# git add .gitattributes
-# cd ~
+cd ~/Documents #AB Clone the RFCS repository, which contains .md files which document work that needs to be done.
+git clone https://github.com/Ingenium-LiDAR/RFCS.git
+cd ~
 
 
 
