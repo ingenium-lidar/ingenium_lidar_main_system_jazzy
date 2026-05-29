@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu 24.04.* LTS install.
-#AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see RPi-Default-Apps-Installer.sh
+#AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see RPi_Default_Apps_Installer.sh
 #AB: This script was most recently run with no fatal errors on April 2 2026
 
 RED='\033[0;31m' #AB format echo text as red
@@ -12,53 +12,76 @@ BOLD='\e[1m' #AB format echo text as bold
 # for code in {0..255}
 #     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
 #   done
+
 ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using the ip address command
 
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
 
-
-echo -e "\e[38;5;82mInstalling base packages...\033[0m"
-sleep 1
-
 echo -e "\e[38;5;82mUpdating and upgrading apt repositories..."
 sudo apt update
 sudo apt upgrade
-echo -e "\e[38;5;82mInstalling htop, openssh, gnome-keyring, rpi-imager, gnome-tweaks, snapd, yamllint, gdm-toolkit, net-tools, pip, python3.12-venv, sl, tree, cloudcompare, blender, gparted, dosfstools, mtools, and vim via apt...\033[0m"
-sudo apt install -y htop #AB Disk space monitor
-sudo apt install -y openssh-server #AB SSH client
-sudo apt-get install -y gnome-keyring #AB Install a secure cryptographic library needed by VS Code
-sudo apt install -y rpi-imager #AB a software for burning OSes onto SD cards for use in a Raspberry Pi
-sudo apt install -y gnome-tweaks #AB An OS customization tool
-sudo apt install -y snapd #AB A package manager
-sudo apt install -y yamllint #AB a tool to check the syntax of YAML files
-sudo apt install -y gdm-settings libglib2.0-dev-bin #AB Another OS customization tool
-sudo apt install -y net-tools
-sudo apt install -y python3-pip #AB Install pip, Python's package manager.
-sudo apt install -y python3.12-venv #AB Install a package to allow creating python virtual environments
-sudo apt install -y sl #AB Install sl, an alias for ls
-sudo apt install -y tree #AB A fancy directory structure printer
-#AB VERY IMPORTANT NOTE: We used to use snap to install CloudCompare and Blender, but snap bundled packages incompatible with our graphics drivers and everything crashed. Use apt instead. It's safer.
-sudo apt install -y cloudcompare #AB Install CloudCompare (a point-cloud processing software)
-sudo apt install -y blender #AB Install Blender (a 3D modeling software)
-sudo apt install -y gparted #AB A partition manager
-sudo apt install -y dosfstools mtools #AB Install dependencies for gparted on the previous line which let it work with FAT32 formatting
-sudo apt install -y vim #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
-echo -e "\e[38;5;82mInstalling and configuring git...\033[0m"
-sudo apt-get install -y git #AB Install and then configure git (a source control software for coders)
-sudo apt install git-lfs #AB Git Large File Storage, an open source extension to help deal with large files in git commits.
+sudo apt autoremove
+
+echo -e "\e[38;5;82mInstalling apt packages...\033[0m"
+sleep 1
+
+apt_packages=(
+    htop               #AB Interactive process viewer
+    openssh-server     #AB SSH client
+    gnome-keyring      #AB a secure cryptographic library needed by VS Code
+    rpi-imager         #AB a tool for burning OSes onto SD cards for use in a Raspberry Pi
+    gnome-tweaks       #AB An OS customization tool
+    snapd              #AB A package manager
+    yamllint           #AB a tool to check the syntax of YAML files
+    gdm-settings       #AB Another OS customization tool
+    libglib2.0-dev-bin #AB Another OS customization tool
+    net-tools          #AB includes ifconfig and other useful network configuration tools
+    python3-pip        #AB Install pip, Python's package manager.
+    python3.12-venv    #AB Install a package to allow creating python virtual environments
+    sl                 #AB Install sl, an alias for ls
+    tree               #AB A fancy directory structure printer
+    cloudcompare       #AB Install CloudCompare (a point-cloud processing software)
+    blender            #AB Install Blender (a 3D modeling software)
+    gparted            #AB A partition manager
+    dosfstools         #AB Install dependency for gparted on the previous line which lets it work with FAT32 formatting
+    mtools             #AB Install dependency for gparted two lines ago which lets it work with FAT32 formatting
+    vim                #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
+    git                #AB a version control tool
+    git-lfs            #AB GitHub Large File Storage, an open source extension to help deal with large files in git commits.
+)
+
+
+for package in "${apt_packages[@]}"; do
+    echo ""
+    echo ">>> Installing: $package"
+    sudo apt install -y "$package"
+done
+
+
+echo -e "\e[38;5;82mConfiguring git...\033[0m"
+
 git config --global user.email "ingenium.lidar@outlook.com"
 git config --global user.name "Ingenium-LiDAR"
 
-echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender via snap...\033[0m"
-sudo snap install firefox
-sudo snap refresh firefox #AB Update the default-installed Firefox to the latest version
-sudo snap install gh #FK/AB install GitHub command line interface
-sudo snap install emacs #AB Install emacs, for all the people who know that instead of vim
-sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
-code --password-store="gnome-libsecret" #AB (attempt to) configure VS Code to use Gnome Keyring (opening code in the process...)
 
+echo -e "\e[38;5;82mInstalling snap packages...\033[0m"
+
+snap_packages=(
+    firefox #AB Install Firefox Web Browser
+    gh      #FK install GitHub command line interface
+    emacs   #AB Install emacs, for all the people who know that instead of vim
+    code    #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
+)
+
+# Important note! We used to install CloudCompare and Blender via snap before we realized that something about how snap handles graphics on high-end GPUs was causing the apps to crash. Now we use apt instead.
+
+for package in "${snap_packages[@]}"; do
+    echo ""
+    echo ">>> Installing: $package"
+    sudo snap install "$package" --classic
+done
 
 
 #---------------------------------------------CREATE DEFAULT DIRECTORY STRUCTURE---------------------------------------------
