@@ -14,11 +14,10 @@ LIME='\e[38;5;82m' #AB format echo text as bright green
 #     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
 #   done
 
-ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using the ip address command
-
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
+
 
 echo -e "$LIME Updating and upgrading apt repositories...$NC "
 sudo apt update
@@ -83,6 +82,7 @@ for package in "${snap_packages[@]}"; do
     echo ">>> Installing: $package"
     sudo snap install "$package" --classic
 done
+
 
 
 #---------------------------------------------CREATE DEFAULT DIRECTORY STRUCTURE---------------------------------------------
@@ -157,8 +157,9 @@ sudo apt-get -y install ros-jazzy-microstrain-inertial-driver #AB Install the IM
 
 echo -e "$LIME Configuring ports and IP addresses...$NC "
 #AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
-#FK Add a network connection to the ethernet port with the stable ipv4 address 192.168.1.100/24, which is necessary to connect to the VLP-32C LiDAR puck
-nmcli connection add type ethernet ifname $ethernet con-name lidar-puck autoconnect yes ipv4.addresses "192.168.1.201" ipv4.method manual
+
+source ~/Documents/GitHub/ingenium_cartographer/agent_scripts/get_ethernet_address.sh #AB Run the get_ethernet_address.sh script to prompt the user for their ethernet port name and store it in a variable called ethernet. 
+nmcli connection add type ethernet ifname $ethernet con-name lidar-puck autoconnect yes ipv4.addresses "192.168.1.201" ipv4.method manual #FK Add a network connection to the ethernet port with the stable ipv4 address 192.168.1.100/24, which is necessary to connect to the VLP-32C LiDAR puck
 
 
 
