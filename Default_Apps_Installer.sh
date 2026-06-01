@@ -63,7 +63,7 @@ done
 echo -e "$LIME Configuring git...$NC "
 
 git config --global user.email "ingenium.lidar@outlook.com"
-git config --global user.name "Ingenium-LiDAR"
+git config --global user.name "Ingenium-LiDAR-Admin"
 
 
 echo -e "$LIME Installing snap packages...$NC "
