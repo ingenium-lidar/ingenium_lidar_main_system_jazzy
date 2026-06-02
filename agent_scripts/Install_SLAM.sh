@@ -6,7 +6,7 @@ cd ~
 sudo apt install python3-colcon-common-extensions
 #FK source the version of ros
 source /opt/ros/jazzy/setup.bash
-mkdir -p ~/Apps/ros2_ws/src
+mkdir -p ~/Apps/ros2_ws/src #AB 2026-06-02 this directory is automatically created by DAI
 echo -e "\e[38;5;5m If you got a 'fatal' error saying ros2_ws already exists, do not worry. Everything is OK. \033[0m"
 
 cd ~/Apps/ros2_ws/src
