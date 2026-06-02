@@ -28,28 +28,28 @@ echo -e "$LIME Installing apt packages...$NC "
 sleep 1
 
 apt_packages=(
-    htop               #AB Interactive process viewer
-    openssh-server     #AB SSH client
-    gnome-keyring      #AB a secure cryptographic library needed by VS Code
-    rpi-imager         #AB a tool for burning OSes onto SD cards for use in a Raspberry Pi
-    gnome-tweaks       #AB An OS customization tool
-    snapd              #AB A package manager
-    yamllint           #AB a tool to check the syntax of YAML files
-    gdm-settings       #AB Another OS customization tool
-    libglib2.0-dev-bin #AB Another OS customization tool
-    net-tools          #AB includes ifconfig and other useful network configuration tools
-    python3-pip        #AB Install pip, Python's package manager.
-    python3.12-venv    #AB Install a package to allow creating python virtual environments
-    sl                 #AB Install sl, an alias for ls
-    tree               #AB A fancy directory structure printer
-    cloudcompare       #AB Install CloudCompare (a point-cloud processing software)
     blender            #AB Install Blender (a 3D modeling software)
-    gparted            #AB A partition manager
+    cloudcompare       #AB Install CloudCompare (a point-cloud processing software)
     dosfstools         #AB Install dependency for gparted on the previous line which lets it work with FAT32 formatting
-    mtools             #AB Install dependency for gparted two lines ago which lets it work with FAT32 formatting
-    vim                #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
+    gdm-settings       #AB Another OS customization tool
     git                #AB a version control tool
     git-lfs            #AB GitHub Large File Storage, an open source extension to help deal with large files in git commits.
+    gnome-keyring      #AB a secure cryptographic library needed by VS Code
+    gnome-tweaks       #AB An OS customization tool
+    gparted            #AB A partition manager
+    htop               #AB Interactive process viewer
+    libglib2.0-dev-bin #AB Another OS customization tool
+    mtools             #AB Install dependency for gparted two lines ago which lets it work with FAT32 formatting
+    net-tools          #AB includes ifconfig and other useful network configuration tools
+    openssh-server     #AB SSH client
+    python3-pip        #AB Install pip, Python's package manager.
+    python3.12-venv    #AB Install a package to allow creating python virtual environments
+    rpi-imager         #AB a tool for burning OSes onto SD cards for use in a Raspberry Pi
+    snapd              #AB A package manager
+    sl                 #AB Install sl, an alias for ls
+    tree               #AB A fancy directory structure printer
+    vim                #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
+    yamllint           #AB a tool to check the syntax of YAML files
 )
 
 
