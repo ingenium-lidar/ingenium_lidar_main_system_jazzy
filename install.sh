@@ -17,24 +17,24 @@ function print_help() { #AB This function prints the help text
     echo '
 ------------------------------------------------------------------------------------------HELP PAGE FOR install.sh------------------------------------------------------------------------------------------
 
-Usage: ./install.sh ARGUMENT
+Usage: ./install.sh <arg>
 
 A script for installing various specific software packages used by the Ingenium LiDAR team. 
 
 
-ARGUMENT
+VALID ARGUMENTS
 
-    dev-jazzy           Installs the LiDAR team developer tools for ROS2 Jazzy Jalisco. Use only on Ubuntu 24.04.1 LTS Desktop
-    rpi                 Installs tools for data acquisition ONLY. Use on Raspberry Pi 3 hardware with Ubuntu 24.04.2 LTS Server
+    --dev-jazzy           Installs the LiDAR team developer tools for ROS2 Jazzy Jalisco. Use only on Ubuntu 24.04.1 LTS Desktop
+    --rpi                 Installs tools for data acquisition ONLY. Use on Raspberry Pi 3 hardware with Ubuntu 24.04.2 LTS Server
     --h, --help         Prints this help page
-    sl                  ...try it and see
+    --sl                  ...try it and see
     [Anything Else]     Prints this help page
 
 
 EXAMPLE
     
     To install the LiDAR team developer tools for ROS2 Jazzy Jalisco on a clean Ubuntu 24.04.1 LTS Desktop, you would run:
-    ./install.sh dev-jazzy
+    ./install.sh --dev-jazzy
 
 
 For more details or more help with this script, please see the GitHub README.md file, located at https://github.com/ingenium-lidar/ingenium_cartographer/blob/jazzy/README.md
