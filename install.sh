@@ -26,9 +26,9 @@ ARGUMENT
 
     dev-jazzy           Installs the LiDAR team developer tools for ROS2 Jazzy Jalisco. Use only on Ubuntu 24.04.1 LTS Desktop
     rpi                 Installs tools for data acquisition ONLY. Use on Raspberry Pi 3 hardware with Ubuntu 24.04.2 LTS Server
-    -h, --help          Prints this help page
+    --h, --help         Prints this help page
     sl                  ...try it and see
-    [NONE]              Prints this help page
+    [Anything Else]     Prints this help page
 
 
 EXAMPLE
@@ -47,19 +47,19 @@ sleep 2
 read -r
 
 
-if [ $parameter == "dev-jazzy" ]; then #AB Download the Jazzy DAI
+if [ $parameter == "--dev-jazzy" ]; then #AB Download the Jazzy DAI
     echo "Installing Ingenium LiDAR's dev-jazzy package"
     wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/ingenium-lidar/ingenium_cartographer/refs/heads/jazzy/Default_Apps_Installer.sh
 
 
-elif [ $parameter == "rpi" ]; then #AB Download the Jazzy RDAI
+elif [ $parameter == "--rpi" ]; then #AB Download the Jazzy RDAI
     echo "Installing Ingenium LiDAR's rpi package"
     wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/ingenium-lidar/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh
 
 elif [ $parameter == "--help" ] || [ $parameter == "--h" ]; then 
     print_help #AB Print the help page
     
-elif [ $parameter == "sl" ]; then
+elif [ $parameter == "--sl" ]; then
     sudo apt install sl # Install critical dependency
     echo ""
     echo "He he he..."
@@ -73,7 +73,7 @@ else
 fi
 
 
-if [ $parameter == "dev-jazzy" ] || [ $parameter == "rpi" ]; then #AB if the script actually downloaded something meaningful...
+if [ $parameter == "--dev-jazzy" ] || [ $parameter == "--rpi" ]; then #AB if the script actually downloaded something meaningful...
     rm $0 #AB Delete install.sh
     chmod +x ingenium_lidar_installer.sh #AB Mark the downloaded script as executable
     ./ingenium_lidar_installer.sh #AB Run the downloaded script

@@ -13,18 +13,18 @@
 
     The valid arguments are: 
 
-    - `dev-jazzy`
-    - `rpi`
-    - `sl`
+    - `--dev-jazzy`
+    - `--rpi`
+    - `--sl`
     - `--help`
 
     The `--help` option provides more information about the different options. 
 
-    `dev-jazzy` is intended for use on the Ubuntu 24.04.1 LTS Desktop developer laptop for a LiDAR project. 
+    `--dev-jazzy` is intended for use on the Ubuntu 24.04.1 LTS Desktop developer laptop for a LiDAR project. 
 
-    `rpi` is intended for use on an Ubuntu 24.04.2 LTS Server installation on a Raspberry Pi 3. It exclusively installs the dependencies and packages needed for recording data from the LiDAR puck and IMU. 
+    `--rpi` is intended for use on an Ubuntu 24.04.2 LTS Server installation on a Raspberry Pi 3. It exclusively installs the dependencies and packages needed for recording data from the LiDAR puck and IMU. 
 
-    For more details on `sl`, see the help menu.
+    For more details on `--sl`, see the help menu.
 
     Ommitting a parameter or submitting an invalid parameter is the same as calling `--help`. 
 
@@ -56,18 +56,11 @@ If you'd rather not run a random bash script straight off the web, you can use t
 
 1. Mark the downloaded script as executable by running `chmod +x install.sh`
 
-2. Run the script with the appropriate argument to install a particular set of software packages from this repository. The valid arguments are: 
-
-    - `dev-jazzy`
-    - `rpi`
-    - `sl`
-    - `--help`
-
-    The `--help` option provides more information about the different options. `dev-jazzy` is intended for use on the Ubuntu 24.04.1 LTS Desktop developer laptop for a LiDAR project. `rpi` is intended for use on an Ubuntu 24.04.2 LTS Server installation on a Raspberry Pi 3. It exclusively installs the dependencies and packages needed for recording data from the LiDAR puck and IMU. For more details on `sl`, see the help menu.
+2. Run the script with the appropriate argument to install a particular set of software packages from this repository. The valid arguments are explained above.
 
     To set up the dev-jazzy system, you would run
 
-    `./install.sh dev-jazzy`
+    `./install.sh --dev-jazzy`
     
     These scripts frequently prompt sudo at various stages of the process. This is normal. 
 
