@@ -1,6 +1,6 @@
 # ingenium_cartographer
 
-&nbsp; &nbsp; &nbsp; This branch of the repository contains bash scripts and config files for slamming data for the Wheaton College Tel Shimron lidar project. This branch is built on ROS2 Jazzy Jalisco. As of this writing (May 2026) this branch is NOT complete, and NOT functional.
+&nbsp; &nbsp; &nbsp; This repository contains bash scripts and config files for installing all relevant tools and gathering and processing data for the Wheaton College Tel Shimron lidar project. This branch is built on ROS2 Jazzy Jalisco. As of this writing (June 2026) this branch is NOT complete, and NOT functional.
 
 
 ![Screenshot](blanchard.png)
