@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #AB Run on a clean Ubuntu Server 24.04.2 LTS system
+#AB This script has been majorly updated since it was last tested from scratch. Please verify functionality and report bugs to the other devs.
 
 
 #---------------------------------------------UPDATE THE SYSTEM AND INSTALL PACKAGES---------------------------------------------
@@ -37,10 +38,6 @@ rm Default_Apps_Installer.sh display_bag.sh install.sh process_bag.sh subtract.s
 sudo rm -r python_scripts
 sudo rm -r gui_scripts
 
-#AB Remove all files in the cartographer_config directory which are not relevant to data acquisition
-cd cartographer_config
-rm demo_3d.rviz display.launch lidar_stick.rviz lidar_stick.urdf localization.launch localization.lua slam_visualize.launch slam.launch slam.lua slam.lua_old slamtest.lua
-
 cd .. #AB Return to the ingenium_cartographer directory
 cd agent_scripts
 rm Install_LIO-SAM.sh Install_SLAM.sh Install_rsasaki_slam.sh
@@ -52,6 +49,20 @@ for file in *; do #AB Iterate through all files within it
     chmod +x $file #AB ...then mark it as executable
   fi
 done
+
+
+cd cartographer_config #FK go into the config folder
+sudo mv use_network_manager.yaml /etc/netplan #FK move file that makes Ubuntu Server use NetworkManager into the correct folder
+
+
+sudo chmod +x RPi_Network_Config.sh #FK mark the second installer script as executable
+sudo mv RPi_Network_Config.sh ~ #FK move second installer script to the main directory
+#AB Clean up all files in cartographer_config that aren't needed for the ROS2 system
+mv microstrain_launch_ingenium.py ..
+cd ..
+sudo rm -rfd cartographer_config
+mkdir cartographer_config
+mv microstrain_launch_ingenium.py cartographer_config
 
 
 
@@ -74,16 +85,6 @@ sudo apt-get install -y ros-jazzy-microstrain-inertial-driver #AB Install the IM
 sudo apt update
 sudo apt upgrade
 sudo apt autoremove
-
-
-
-#---------------------------------------------CONFIGURE NETWORK---------------------------------------------
-
-
-cd ~/Documents/GitHub/ingenium_cartographer/cartographer_config #FK go into the config folder
-sudo mv use_network_manager.yaml /etc/netplan #FK move file that makes Ubuntu Server use NetworkManager into the correct folder
-sudo chmod +x RPi_Network_Config.sh #FK mark the second installer script as executable
-sudo mv RPi_Network_Config.sh ~ #FK move second installer script to the main directory
 
 
 
