@@ -28,11 +28,10 @@ cd ~/Documents/GitHub
 
 #AB Clone the ingenium_cartographer repository if it does not already exist
 if ! [ -d "ingenium_cartographer" ]; then
-    git clone https://github.com/JohannesByle/ingenium_cartographer.git
+    git clone https://github.com/ingenium-lidar/ingenium_cartographer.git
 fi
 
 cd ingenium_cartographer
-git switch jazzy
 
 
 #AB Remove all files in the main directory which are not relevant to data acquisition
@@ -58,6 +57,7 @@ done
 
 
 #AB Install ROS Jazzy
+cd agent_scripts
 ./Install_Jazzy.sh 
 
 sudo apt-get update
