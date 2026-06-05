@@ -2,8 +2,6 @@
 
 #AB Run on a clean Ubuntu Server 24.04.2 LTS system
 
-cwd=$(pwd)
-
 
 #---------------------------------------------UPDATE THE SYSTEM AND INSTALL PACKAGES---------------------------------------------
 
@@ -35,16 +33,20 @@ cd ingenium_cartographer
 
 
 #AB Remove all files in the main directory which are not relevant to data acquisition
-rm Default_Apps_Installer.sh display_bag.sh Install_LIO-SAM.sh install.sh process_bag.sh subtract.sh blanchard.png Install_Humble.sh
+rm Default_Apps_Installer.sh display_bag.sh install.sh process_bag.sh subtract.sh blanchard.png
 sudo rm -r python_scripts
 sudo rm -r gui_scripts
 
 #AB Remove all files in the cartographer_config directory which are not relevant to data acquisition
 cd cartographer_config
 rm demo_3d.rviz display.launch lidar_stick.rviz lidar_stick.urdf localization.launch localization.lua slam_visualize.launch slam.launch slam.lua slam.lua_old slamtest.lua
+
 cd .. #AB Return to the ingenium_cartographer directory
+cd agent_scripts
+rm Install_LIO-SAM.sh Install_SLAM.sh Install_rsasaki_slam.sh
+mv Install_Jazzy.sh ..
 
-
+cd .. #AB Return to the ingenium_cartographer directory
 for file in *; do #AB Iterate through all files within it
   if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
     chmod +x $file #AB ...then mark it as executable
@@ -57,13 +59,12 @@ done
 
 
 #AB Install ROS Jazzy
-cd agent_scripts
 ./Install_Jazzy.sh 
 
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install -y ros-jazzy-velodyne #AB Install the IMU driver. It's in a stack hosted (I believe) on the ROS website.
-sudo apt-get install -y ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
+sudo apt-get install -y ros-jazzy-velodyne                    #AB Install the LiDAR driver. This and the following are not a regular part of APT, but they are accessible to APT after Jazzy has been installed
+sudo apt-get install -y ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. 
 
 
 
@@ -89,19 +90,12 @@ sudo mv RPi_Network_Config.sh ~ #FK move second installer script to the main dir
 #---------------------------------------------EXIT---------------------------------------------
 
 
-cd $cwd #AB return to the original directory
-# echo 'Deleting file at $0' && rm "$0" #AB Move the currently running script to Trash, since a copy of it is now present in ingenium_cartographer.
 echo "RPi_Default_Apps_Installer.sh has finished running now."
 sleep 2
 echo "System will reboot in..."
-echo 5
-sleep 1
-echo 4
-sleep 1
-echo 3
-sleep 1
-echo 2
-sleep 1
-echo 1
-sleep 1
+echo 5 && sleep 1
+echo 4 && sleep 1
+echo 3 && sleep 1
+echo 2 && sleep 1
+echo 1 && sleep 1
 reboot
