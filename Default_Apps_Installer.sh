@@ -80,7 +80,7 @@ snap_packages=(
 for package in "${snap_packages[@]}"; do
     echo ""
     echo ">>> Installing: $package"
-    sudo snap install "$package" --classic
+    sudo snap install "$package"
 done
 
 
@@ -132,6 +132,8 @@ for file in *; do #AB Iterate through all files within it
     fi
 done
 
+
+mv ~/Documents/GitHub/ingenium_cartographer/cartographer_config/.bash_aliases ~ #AB Move the .bash_aliases file in cartographer_config to the home directory
 
 
 
@@ -229,8 +231,6 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
 
 
 echo -e "$LIME Cleaning up...$NC "
-
-echo 'alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"' >> ~/.bashrc #AB add the alias update to the system ~/.bashrc file. It will now update, upgrade, and finally autoremove all unnecessary files whenever the command "update" is entered.
 
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
