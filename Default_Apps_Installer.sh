@@ -14,6 +14,8 @@ BOLD='\e[1m' #AB format echo text as bold
 #   done
 ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using the ip address command
 
+sudo -v #AB prompt for sudo at the beginning, which helps minimize the number of times sudo is prompted later.
+
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
