@@ -10,3 +10,5 @@
 /*.mcap
 /__pycache__
 /.venv
+/cartographer_config/__pycache__
+/python_scripts/__pycache__

@@ -14,9 +14,9 @@ sudo apt install python3-rosdep #FK install rosdep if it isn't there already (be
 #---------------------------------------------SETUP WORKSPACE---------------------------------------------
 
 
-mkdir -p ~/Apps/ros2_ws/src #FK set up a workspace for ros2 software packages
+mkdir -p ~/Apps/ros2_ws/src #FK set up a workspace for ros2 software packages. #AB 2026-06-02 this directory is automatically created by DAI
 cd ~/Apps/ros2_ws/src
-git clone --recursive https://github.com/rsasaki0109/lidarslam_ros2 #FK clones the github that has the code for our SLAM software package, called lidarslam_ros2; it does so recursively, which I don’t know what that means, but the documentation for lidarslam_ros2 says it is necessary
+git clone --recursive https://github.com/rsasaki0109/lidarslam_ros2 #FK clones the github that has the code for our SLAM software package, called lidarslam_ros2; the documentation for lidarslam_ros2 says the recursive is necessary. #AB The "recursive" flag indicates that git should clone submodules--basically small git repos inside other repos.
 
 
 
