@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+input_file="$1"
+
+source ~/Apps/ndt_omp_ros2/ros2_ws/install/setup.bash
+source ~/Apps/lidarslam_ros2/ros2_ws/install/setup.bash
+
+ros2 launch lidarslam lidarslam.launch.py &
+
+ros2 bag play "$input_file" 
+
+
+echo "Bag fully processed, press any key to exit"
+read -r 
