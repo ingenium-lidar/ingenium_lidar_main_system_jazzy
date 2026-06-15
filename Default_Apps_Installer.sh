@@ -30,29 +30,33 @@ echo -e "$LIME Installing apt packages...$NC "
 sleep 1
 
 apt_packages=(
-    blender            #AB Install Blender (a 3D modeling software)
-    cloudcompare       #AB Install CloudCompare (a point-cloud processing software)
-    dosfstools         #AB Install dependency for gparted on the previous line which lets it work with FAT32 formatting
-    firefox            #AB Install Firefox Web Browser
-    gdm-settings       #AB Another OS customization tool
-    git                #AB a version control tool
-    git-lfs            #AB GitHub Large File Storage, an open source extension to help deal with large files in git commits.
-    gnome-keyring      #AB a secure cryptographic library needed by VS Code
-    gnome-tweaks       #AB An OS customization tool
-    gparted            #AB A partition manager
-    htop               #AB Interactive process viewer
-    libglib2.0-dev-bin #AB Another OS customization tool
-    mtools             #AB Install dependency for gparted two lines ago which lets it work with FAT32 formatting
-    net-tools          #AB includes ifconfig and other useful network configuration tools
-    openssh-server     #AB SSH client
-    python3-pip        #AB Install pip, Python's package manager.
-    python3.12-venv    #AB Install a package to allow creating python virtual environments
-    rpi-imager         #AB a tool for burning OSes onto SD cards for use in a Raspberry Pi
-    snapd              #AB A package manager
-    sl                 #AB Install sl, an alias for ls
-    tree               #AB A fancy directory structure printer
-    vim                #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
-    yamllint           #AB a tool to check the syntax of YAML files
+    blender                           #AB Install Blender (a 3D modeling software)
+    cloudcompare                      #AB Install CloudCompare (a point-cloud processing software)
+    dosfstools                        #AB Install dependency for gparted which lets it work with FAT32 formatting
+    firefox                           #AB Install Firefox Web Browser
+    gdm-settings                      #AB Another OS customization tool
+    git                               #AB a version control tool
+    git-lfs                           #AB GitHub Large File Storage, an open source extension to help deal with large files in git commits.
+    gnome-keyring                     #AB a secure cryptographic library needed by VS Code
+    gnome-tweaks                      #AB An OS customization tool
+    gparted                           #AB A partition manager
+    htop                              #AB Interactive process viewer
+    libglib2.0-dev-bin                #AB A dependency of gdm-settings (and a lot of other things, too, including gnone-tweaks)
+    libpcl-dev                        #AB CLI, API, etc for PCL
+    mtools                            #AB Install dependency for gparted which lets it work with FAT32 formatting
+    net-tools                         #AB includes ifconfig and other useful network configuration tools
+    openssh-server                    #AB SSH client
+    pcl-tools                         #AB Install pcl ("point cloud library"), used for manipulating point clouds.
+    python3-pip                       #AB Install pip, Python's package manager.
+    python3.12-venv                   #AB Install a package to allow creating python virtual environments
+    python3-colcon-common-extensions  #AB Install colcon, the ROS build tool.
+    python3-rosdep                    #AB Install rosdep, a tool for managing dependencies in ROS
+    rpi-imager                        #AB a tool for burning OSes onto SD cards for use in a Raspberry Pi
+    snapd                             #AB A package manager
+    sl                                #AB Install sl, an alias for ls
+    tree                              #AB A fancy directory structure printer
+    vim                               #AB Install vim, _the_ standard text editor for Terminal (if not the most user friendly)
+    yamllint                          #AB a tool to check the syntax of YAML files
 )
 
 

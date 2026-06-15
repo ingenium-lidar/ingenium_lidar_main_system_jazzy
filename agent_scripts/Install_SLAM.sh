@@ -1,11 +1,11 @@
 #!/bin/bash
 
+source /opt/ros/jazzy/setup.bash #FK source the version of ros
 
 # INSTALL THE GITHUB THAT IS A DEPENDENCY OF THE MAIN SLAM GITHUB
-cd ~
-sudo apt install python3-colcon-common-extensions
-#FK source the version of ros
-source /opt/ros/jazzy/setup.bash
+
+sudo apt install python3-colcon-common-extensions -y #AB 2026-06-15 added this installer to DAI
+
 mkdir -p ~/Apps/ros2_ws/src #AB 2026-06-02 this directory is automatically created by DAI
 echo -e "\e[38;5;5m If you got a 'fatal' error saying ros2_ws already exists, do not worry. Everything is OK. \033[0m"
 
@@ -25,6 +25,7 @@ source ~/Apps/ros2_ws/src/ndt_omp_ros2/install/setup.bash
 
 #AB Install the slam repo and some more of its dependencies
 sudo apt install python3-rosdep -y #AB install rosdep, which I guess doens't come  by default! NB! python3-rosdep2 is only for Debian--python3-rosdep is for Ubuntu 
+#AB 2026-06-15 added the above installer to DAI
 sudo rosdep init #AB turn on rosdep
 rosdep update  #AB update rosdep
 
