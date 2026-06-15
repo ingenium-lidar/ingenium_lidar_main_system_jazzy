@@ -31,7 +31,7 @@ cd ndt_omp_ros2
 colcon build --executor sequential --cmake-clean-first
 echo -e "\e[38;5;5m If you got depreciation warnings and such, but nothing labeled 'error' or something else really serious, do not worry. Everything is OK. \033[0m"
 #FK source the ros setup script for this application specifically
-source ~/Apps/ndt_omp_ros2/ros2_ws/src/ndt_omp_ros2/install/setup.bash
+source ~/Apps/ndt_omp_ros2/ros2_ws/install/setup.bash
 
 
 
@@ -52,8 +52,8 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release #AB Colco
 #---------------------------------------------ADD ALIASES ETC---------------------------------------------
 
 
-echo 'source ~/Apps/ndt_omp_ros2/ros2_ws/src/ndt_omp_ros2/install/setup.bash' >> ~/.bashrc #AB Add command to source the SLAM package upon terminal startup to the system ~/.bashrc file.
-echo 'source ~/Apps/lidarslam_ros2/ros2_ws/src/lidarslam_ros2/install/setup.bash' >> ~/.bashrc #AB Add command to source the SLAM package upon terminal startup to the system ~/.bashrc file.
+echo 'source ~/Apps/ndt_omp_ros2/ros2_ws/install/setup.bash' >> ~/.bashrc #AB Add command to source the SLAM package upon terminal startup to the system ~/.bashrc file.
+echo 'source ~/Apps/lidarslam_ros2/ros2_ws/install/setup.bash' >> ~/.bashrc #AB Add command to source the SLAM package upon terminal startup to the system ~/.bashrc file.
 echo -e "\e[38;5;82mSLAM installation complete.\033[0m"
 
 
