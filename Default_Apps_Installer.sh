@@ -117,18 +117,18 @@ echo -e "# Instructions for Garbage Directory \n\n This directory exists for fil
 
 
 
-#---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
+#---------------------------------------------INSTALL "ingenium_lidar_main_system_jazzy" REPOSITORY---------------------------------------------
 
 
 echo -e "$LIME Installing the Ingenium Cartographer repository...$NC "
-if [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer already exists in ~/Documents/GitHub...
-    sudo rm -rfd ~/Documents/GitHub/ingenium_cartographer #AB ...then delete it, along with all of its contents.
+if [ -d ~/Documents/GitHub/ingenium_lidar_main_system_jazzy ]; then #AB If a directory called ingenium_lidar_main_system_jazzy already exists in ~/Documents/GitHub...
+    sudo rm -rfd ~/Documents/GitHub/ingenium_lidar_main_system_jazzy #AB ...then delete it, along with all of its contents.
 fi
 
 cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
-git clone https://github.com/ingenium-lidar/ingenium_cartographer.git #AB ...and clone the ingenium_cartographer repository from GitHub
+git clone https://github.com/ingenium-lidar/ingenium_lidar_main_system_jazzy.git #AB ...and clone the ingenium_lidar_main_system_jazzy repository from GitHub
 
-cd ingenium_cartographer #AB Navigate to the newly cloned repository
+cd ingenium_lidar_main_system_jazzy #AB Navigate to the newly cloned repository
 for file in *; do #AB Iterate through all files within it
     if [[ "$file" == *.sh ]]; then #AB If the file ends in .sh (i.e., if it's a bash script)...
         chmod +x "$file" #AB ...then mark it as executable
@@ -142,7 +142,7 @@ for file in *; do #AB Iterate through all files within it
 done
 
 
-mv ~/Documents/GitHub/ingenium_cartographer/cartographer_config/.bash_aliases ~ #AB Move the .bash_aliases file in cartographer_config to the home directory
+mv ~/Documents/GitHub/ingenium_lidar_main_system_jazzy/cartographer_config/.bash_aliases ~ #AB Move the .bash_aliases file in cartographer_config to the home directory
 
 
 
@@ -150,7 +150,7 @@ mv ~/Documents/GitHub/ingenium_cartographer/cartographer_config/.bash_aliases ~ 
 
 
 echo -e "$LIME Installing ROS2 Jazzy Jalisco...$NC "
-cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory.
+cd ~/Documents/GitHub/ingenium_lidar_main_system_jazzy/agent_scripts #AB Navigate to the ingenium_lidar_main_system_jazzy/agent_scripts directory.
 ./Install_Jazzy.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
@@ -213,7 +213,7 @@ rm veloview.tar.gz #AB delete the archive previously downloaded
 
 
 echo -e "$LIME Installing lidarslam_ros2...$NC "
-cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. 
+cd ~/Documents/GitHub/ingenium_lidar_main_system_jazzy/agent_scripts #AB Navigate to the ingenium_lidar_main_system_jazzy/agent_scripts directory. 
 # ./Install_rsasaki_slam.sh #AB Run the Install_rsasaki_slam.sh script to install lidarslam_ros2 
 echo -e "\e[38;5;196m\033[1m DID NOT RUN SLAM INSTALLER. THE RELEVANT LINE OF CODE HAS BEEN COMMENTED UNTIL THE SCRIPT IS COMPLETE $NC "
 
@@ -246,9 +246,9 @@ echo -e "$LIME Cleaning up...$NC "
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove -y #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
 
-gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
+gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_lidar_main_system_jazzy/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
 
 echo -e "$LIME Default_Apps_Installer.sh has finished running.$NC "
 
-cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts
+cd ~/Documents/GitHub/ingenium_lidar_main_system_jazzy/agent_scripts
 ./reboot.sh

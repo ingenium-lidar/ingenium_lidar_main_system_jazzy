@@ -15,7 +15,7 @@ source "$HOME"/catkin_ws/install_isolated/setup.bash
 roscore & ### execute command roscore in the background and proceed whether or not it has finished running.
 sleep 2 ### Pause 2 seconds to allow roscore to launch, and proceed
 
-roslaunch ~/ingenium_cartographer/cartographer_config/display.launch & ### Launch ros with the settings in display.launch (a file composed mainly of links to other config files). Launch it in the background and proceed whether or not it has finished running.
+roslaunch ~/ingenium_lidar_main_system_jazzy/cartographer_config/display.launch & ### Launch ros with the settings in display.launch (a file composed mainly of links to other config files). Launch it in the background and proceed whether or not it has finished running.
 sleep 2 ### Pause to give roslaunch time to start
 
 rosbag play "$file" ### This line displays the .bag file specified in the argument passed to this script when it is run.

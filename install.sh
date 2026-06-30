@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #AB To download this script, use:
-# wget -O install.sh https://tinyurl.com/ingenium-lidar-installer
+# wget -O install.sh https://tinyurl.com/ingenium-lidar-installer-jazzy
 
 #AB To run this script remotely, without downloading it first, use:
-# bash <(curl -L tinyurl.com/ingenium-lidar-installer)
+# bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy)
 
 #AB Running the above command with the "sl" parameter (explained below) would look like:
-# bash <(curl -L tinyurl.com/ingenium-lidar-installer) sl
+# bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy) sl
 
 
 parameter=$1 #AB take the parameter passed to the script
@@ -37,7 +37,7 @@ EXAMPLE
     ./install.sh --dev-jazzy
 
 
-For more details or more help with this script, please see the GitHub README.md file, located at https://github.com/ingenium-lidar/ingenium_cartographer/blob/jazzy/README.md
+For more details or more help with this script, please see the GitHub README.md file, located at https://github.com/ingenium-lidar/ingenium_lidar_main_system_jazzy/blob/main/README.md
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
    
 }
@@ -49,12 +49,12 @@ read -r
 
 if [ $parameter == "--dev-jazzy" ]; then #AB Download the Jazzy DAI
     echo "Installing Ingenium LiDAR's dev-jazzy package"
-    wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/ingenium-lidar/ingenium_cartographer/refs/heads/jazzy/Default_Apps_Installer.sh
+    wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/ingenium-lidar/ingenium_lidar_main_system_jazzy/refs/heads/main/Default_Apps_Installer.sh
 
 
 elif [ $parameter == "--rpi" ]; then #AB Download the Jazzy RDAI
     echo "Installing Ingenium LiDAR's rpi package"
-    wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/ingenium-lidar/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh
+    wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/ingenium-lidar/ingenium_lidar_main_system_jazzy/refs/heads/main/RPi_Default_Apps_Installer.sh
 
 elif [ $parameter == "--help" ] || [ $parameter == "--h" ]; then 
     print_help #AB Print the help page

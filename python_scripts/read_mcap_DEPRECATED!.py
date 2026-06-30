@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
 
 
-#AB example: /usr/bin/python3 /home/lidar/Documents/Github/ingenium_cartographer/python_scripts/read_mcap.py /home/lidar/Documents/Data/rosbag2_2025_07_07-16_16_48/rosbag2_2025_07_07-16_16_48_0.mcap
+#AB example: /usr/bin/python3 /home/lidar/Documents/Github/ingenium_lidar_main_system_jazzy/python_scripts/read_mcap.py /home/lidar/Documents/Data/rosbag2_2025_07_07-16_16_48/rosbag2_2025_07_07-16_16_48_0.mcap
 #AB: Note to self for morning: working here. VelodyneScan object has no attribute "data", which means you gotta read the timestamps, positions, xs ys and zs separately. Look up the specs for the topics published. 
 
 # 'x', 'y', 'z', 'intensity', 'time', 'column', 'ring', 'return_type'
