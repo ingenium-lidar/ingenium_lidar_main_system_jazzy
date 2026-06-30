@@ -86,6 +86,13 @@ The repository probably won't have the same settings as usual. I reccomend makin
 
 In order to make sure that people can't push changes directly to the main branch, go to “Code and automation” and “Branches” and create a ruleset. Make it Active, let no one bypass it, add a target branch (specifically the default branch), and use the following rules: "Restrict deletions", "Require a pull request before merging", and "Block force pushes".
 
+### Checking for Where the Repository Name is Used Within the Code
+Do this once you've cloned the new repository; run these lines within that repository in a bash terminal.
+
+The things that come up will probably include the things in the sections below, but it MIGHT also include other things. Look carefully through the output to make sure you understand what the repository name is doing on each line. If there's anything that would be harmed by an automatic replacement of the old repository name with the new repository name, make manual changes to it now so that everything will run smoothly; then add what you learned to this section of the README.
+
+Bash line to find where the repository name is used within the repository: `find . -type f -exec grep -H "<old_repository_name>" {} +` (replacing the stuff within the <> with what it makes sense to).
+
 ### GitHub Links to Update Within the Code of this Repository
 Do this once you've cloned the new repository; make these changes, make a commit, and push (to a branch that branches off of the main branch, as usual).
 
