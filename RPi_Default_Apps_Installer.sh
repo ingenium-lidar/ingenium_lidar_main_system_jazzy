@@ -27,7 +27,7 @@ cd ~/Documents/GitHub
 
 #AB Clone the ingenium_cartographer repository if it does not already exist
 if ! [ -d "ingenium_cartographer" ]; then
-    git clone https://github.com/ingenium-lidar/ingenium_cartographer.git
+    git clone https://github.com/ingenium-lidar/ingenium_lidar_main_system_jazzy.git
 fi
 
 cd ingenium_cartographer

@@ -126,7 +126,7 @@ if [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory call
 fi
 
 cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
-git clone https://github.com/ingenium-lidar/ingenium_cartographer.git #AB ...and clone the ingenium_cartographer repository from GitHub
+git clone https://github.com/ingenium-lidar/ingenium_lidar_main_system_jazzy.git #AB ...and clone the ingenium_cartographer repository from GitHub
 
 cd ingenium_cartographer #AB Navigate to the newly cloned repository
 for file in *; do #AB Iterate through all files within it

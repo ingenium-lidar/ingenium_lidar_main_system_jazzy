@@ -1,4 +1,4 @@
-# ingenium_cartographer
+# ingenium_lidar_main_system_jazzy
 
 &nbsp; &nbsp; &nbsp; This repository contains bash scripts and config files for installing all relevant tools and gathering and processing data for the Wheaton College Tel Shimron lidar project. This branch is built on ROS2 Jazzy Jalisco. As of this writing (June 2026) this branch is NOT complete, and NOT functional.
 
@@ -31,15 +31,15 @@
 
 1. Once you have decided which variant you would like to run, insert the relevant argument into the following template:
 
-    `bash <(curl -L tinyurl.com/ingenium-lidar-installer) [arg]`
+    `bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy) [arg]`
 
     For example, to print the help menu without installing anything, I would run
 
-    `bash <(curl -L tinyurl.com/ingenium-lidar-installer) --help` in terminal.
+    `bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy) --help` in terminal.
 
     To install the ROS Jazzy-flavored development environment, I would run 
 
-    `bash <(curl -L tinyurl.com/ingenium-lidar-installer) --dev-jazzy`
+    `bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy) --dev-jazzy`
 
 
 <details>
@@ -52,7 +52,7 @@ If you'd rather not run a random bash script straight off the web, you can use t
 
 0. Use wget to download `install.sh` from the internet. We provide a tinyurl link to simplify this process. The appropriate command is
 
-    `wget -O install.sh https://tinyurl.com/ingenium-lidar-installer`
+    `wget -O install.sh https://tinyurl.com/ingenium-lidar-installer-jazzy`
 
 1. Mark the downloaded script as executable by running `chmod +x install.sh`
 
@@ -93,9 +93,9 @@ If you'd rather not run a random bash script straight off the web, you can use t
 
 `wget -O [new_file_name] https://raw.githubusercontent.com/[my_user_name]/[my_repository]/refs/heads/[my_branch]/[name_of_my_file]`
 
-For example, to download a deprecated version of `RPi_Default_Apps_Installer.sh`, run:
+For example, to download `RPi_Default_Apps_Installer.sh`, run:
 
-`wget -O RPi_Default_Apps_Installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh`
+`wget -O RPi_Default_Apps_Installer.sh https://raw.githubusercontent.com/ingenium-lidar/ingenium_lidar_main_system_jazzy/refs/heads/main/RPi_Default_Apps_Installer.sh`
 
 </details>
 
