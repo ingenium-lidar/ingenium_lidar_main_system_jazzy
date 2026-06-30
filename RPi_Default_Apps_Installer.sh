@@ -25,12 +25,12 @@ sudo apt install -y sl #AB Install sl, an alias for ls
 mkdir -p ~/Documents/GitHub #AB Create the GitHub directory in the ~/Documents directory. If ~/Documents does not exist, the -p flag creates it also.
 cd ~/Documents/GitHub
 
-#AB Clone the ingenium_cartographer repository if it does not already exist
-if ! [ -d "ingenium_cartographer" ]; then
+#AB Clone the ingenium_lidar_main_system_jazzy repository if it does not already exist
+if ! [ -d "ingenium_lidar_main_system_jazzy" ]; then
     git clone https://github.com/ingenium-lidar/ingenium_lidar_main_system_jazzy.git
 fi
 
-cd ingenium_cartographer
+cd ingenium_lidar_main_system_jazzy
 
 
 #AB Remove all files in the main directory which are not relevant to data acquisition
@@ -38,12 +38,12 @@ rm Default_Apps_Installer.sh display_bag.sh install.sh process_bag.sh subtract.s
 sudo rm -r python_scripts
 sudo rm -r gui_scripts
 
-cd .. #AB Return to the ingenium_cartographer directory
+cd .. #AB Return to the ingenium_lidar_main_system_jazzy directory
 cd agent_scripts
 rm Install_LIO-SAM.sh Install_SLAM.sh Install_rsasaki_slam.sh
 mv Install_Jazzy.sh ..
 
-cd .. #AB Return to the ingenium_cartographer directory
+cd .. #AB Return to the ingenium_lidar_main_system_jazzy directory
 for file in *; do #AB Iterate through all files within it
   if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
     chmod +x $file #AB ...then mark it as executable

@@ -31,7 +31,7 @@ for config_file in "${config_files[@]}"; do
   if [ "$directory" == "lua" ]; then
     directory="configuration_files"
   fi
-  cp "$HOME/ingenium_cartographer/cartographer_config/$config_file" "install_isolated/share/cartographer_ros/$directory/ingenium_$config_file" 
+  cp "$HOME/ingenium_lidar_main_system_jazzy/cartographer_config/$config_file" "install_isolated/share/cartographer_ros/$directory/ingenium_$config_file" 
 done
 
 # Check if bag contains point or packets, if packets forcefully convert
@@ -57,9 +57,9 @@ if [ -f "$file.pbstream" ]; then
 fi
 # Start slam
 if $visualize; then
-  roslaunch cartographer_ros ingenium_slam_visualize.launch bag_filename:="$file" urdf_filename:="~/ingenium_cartographer/cartographer_config/lidar_stick.urdf" &
+  roslaunch cartographer_ros ingenium_slam_visualize.launch bag_filename:="$file" urdf_filename:="~/ingenium_lidar_main_system_jazzy/cartographer_config/lidar_stick.urdf" &
 else
-  roslaunch cartographer_ros ingenium_slam.launch bag_filenames:="$file" urdf_filename:="~/ingenium_cartographer/cartographer_config/lidar_stick.urdf" &
+  roslaunch cartographer_ros ingenium_slam.launch bag_filenames:="$file" urdf_filename:="~/ingenium_lidar_main_system_jazzy/cartographer_config/lidar_stick.urdf" &
 fi
 # Wait for slam to finish
 while [ ! -f "$file.pbstream" ]; do ### ! means not, -f means "file exists", and then "$file.pbstream" checks for the existence of the new .pbstream file that will be generated and uses that to determine when the SLAM has finished running.

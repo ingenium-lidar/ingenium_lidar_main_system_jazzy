@@ -1,8 +1,8 @@
 <launch>
 
-    <arg name="model" default="$(env HOME)/ingenium_cartographer/cartographer_config/lidar_stick.urdf"/>
+    <arg name="model" default="$(env HOME)/ingenium_lidar_main_system_jazzy/cartographer_config/lidar_stick.urdf"/>
     <arg name="gui" default="true"/>
-    <arg name="rvizconfig" default="$(env HOME)/ingenium_cartographer/cartographer_config/lidar_stick.rviz"/>
+    <arg name="rvizconfig" default="$(env HOME)/ingenium_lidar_main_system_jazzy/cartographer_config/lidar_stick.rviz"/>
 
     <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
 
