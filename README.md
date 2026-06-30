@@ -31,15 +31,15 @@
 
 1. Once you have decided which variant you would like to run, insert the relevant argument into the following template:
 
-    `bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy) [arg]`
+    `bash <(curl -L tinyurl.com/ingenium-main-installer-jazzy) [arg]`
 
     For example, to print the help menu without installing anything, I would run
 
-    `bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy) --help` in terminal.
+    `bash <(curl -L tinyurl.com/ingenium-main-installer-jazzy) --help` in terminal.
 
     To install the ROS Jazzy-flavored development environment, I would run 
 
-    `bash <(curl -L tinyurl.com/ingenium-lidar-installer-jazzy) --dev-jazzy`
+    `bash <(curl -L tinyurl.com/ingenium-main-installer-jazzy) --dev-jazzy`
 
 
 <details>
@@ -52,7 +52,7 @@ If you'd rather not run a random bash script straight off the web, you can use t
 
 0. Use wget to download `install.sh` from the internet. We provide a tinyurl link to simplify this process. The appropriate command is
 
-    `wget -O install.sh https://tinyurl.com/ingenium-lidar-installer-jazzy`
+    `wget -O install.sh https://tinyurl.com/ingenium-main-installer-jazzy`
 
 1. Mark the downloaded script as executable by running `chmod +x install.sh`
 
