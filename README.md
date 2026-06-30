@@ -78,6 +78,40 @@ If you'd rather not run a random bash script straight off the web, you can use t
 
     [!WARNING] this script is not yet functional!
 
+## Instructions for Forking this Repository
+### Settings to Change
+Do this using the GitHub website.
+
+The repository probably won't have the same settings as usual. I reccomend making sure that "Issues" is turned on and "Always suggest updating pull request branches" is turned on.
+
+In order to make sure that people can't push changes directly to the main branch, go to “Code and automation” and “Branches” and create a ruleset. Make it Active, let no one bypass it, add a target branch (specifically the default branch), and use the following rules: "Restrict deletions", "Require a pull request before merging", and "Block force pushes".
+
+### GitHub Links to Update Within the Code of this Repository
+Do this once you've cloned the new repository; make these changes, make a commit, and push (to a branch that branches off of the main branch, as usual).
+
+There are some files that have links to github repositories in them, and these will have to be changed to reflect the new repository. The last time this was done, they were found in four places:
+1. README.sh
+2. install.sh
+3. Default_Apps_Installer.sh
+4. RPi_Default_Apps_Installer.sh
+
+They weren't just github.com links, either; there were tinyurl.com links that were used to point to github.com links. You may need to create a link on tinyurl.com that links to the correct GitHub page holding the correct RAW file, and then in the original file you were looking at, replace the old tinyurl link with your new one.
+
+Replacing these links should be done manually.
+
+### (If you renamed the repository) Files to Update Within the Code of this Repository
+Do this once you've cloned the new repository; make these changes, make a commit, and push (to a branch that branches off of the main branch, as usual).
+
+If you rename this repository, you will need to edit some files to match the new repository name. The last time this was done, there were two ways the files used the name:
+1. When navigating files and folders (so, the cd command and things like it)
+2. In comments, when talking about this repository by name
+
+Replacing these worked fine automatically using the following lines of bash below, which I ran from within the new repository (of course, replacing anything in <> with what makes sense):
+```bash
+grep -rl "<old_repository_name>" . | while read file; do
+   sed -i 's/<old_repository_name>/<new_repository_name>/g' "$file"
+done
+```
 
 <details>
 
